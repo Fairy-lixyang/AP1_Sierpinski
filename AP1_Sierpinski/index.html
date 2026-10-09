@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>AP1 交互式2D分形 Sierpinski垫片</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{overflow:hidden;background:#000;color:#ffffff;}
+canvas{display:block;width:100vw;height:100vh;}
+#hint{
+    position:absolute;
+    top:10px;
+    left:10px;
+    font-size:14px;
+    background:rgba(0,0,0,0.65);
+    padding:8px;
+}
+#ui-panel{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:rgba(0,0,0,0.70);
+    border:1px solid #555555;
+    padding:14px;
+    min-width:280px;
+}
+#ui-panel h4{margin-bottom:10px;}
+#ui-panel .row{margin:9px 0;}
+#ui-panel label{display:inline-block;width:120px;font-size:13px;}
+#ui-panel input[type="range"]{width:115px;}
+#ui-panel select{padding:3px 4px;}
+</style>
+</head>
+<body>
+<div id="hint">
+键盘：1‑点云 | 2‑线框 |3‑实体三角 | 空格‑暂停动画<br>
+鼠标左键拖拽平移｜滚轮缩放
+</div>
+
+<div id="ui-panel">
+    <h4>参数控制面板</h4>
+    <div class="row">
+        <label>渲染模式</label>
+        <select id="modeSelect">
+            <option value="0">0‑混沌点云 POINTS</option>
+            <option value="1">1‑递归线框 LINES</option>
+            <option value="2">2‑递归实体 TRIANGLES</option>
+        </select>
+    </div>
+    <div class="row">
+        <label>混沌游戏点数</label>
+        <input type="range" id="pointCountSlider" min="5000" max="30000" step="500" value="20000">
+        <span id="pointCountVal">20000</span>
+    </div>
+    <div class="row">
+        <label>递归细分深度</label>
+        <input type="range" id="depthSlider" min="0" max="6" step="1" value="4">
+        <span id="depthVal">4</span>
+    </div>
+    <div class="row">
+        <label>点大小</label>
+        <input type="range" id="pointSizeSlider" min="1.0" max="8.0" step="0.2" value="2.0">
+        <span id="pointSizeVal">2.0</span>
+    </div>
+    <div class="row">
+        <label>配色方案</label>
+        <select id="colorSelect">
+            <option value="0">配色A‑青蓝色</option>
+            <option value="1">配色B‑玫红色</option>
+            <option value="2">配色C‑亮绿色</option>
+        </select>
+    </div>
+</div>
+
+<canvas id="gl-canvas"></canvas>
+<script src="main.js"></script>
+</body>
+</html>
